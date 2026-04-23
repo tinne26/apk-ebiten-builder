@@ -141,7 +141,6 @@ public class MainActivity extends AppCompatActivity {
       return;
     }
 
-
     if (!isFriendlyKeyboard(imm)) {
       // clear capitalization, autocomplete, multiline... flags
       inputType = inputType & ~0xF000;
@@ -156,14 +155,11 @@ public class MainActivity extends AppCompatActivity {
       }
     }
 
-    boolean refresh = (view.currentInputType != inputType || view.currentImeOptions != imeOptions);
     view.currentInputType = inputType;
     view.currentImeOptions = imeOptions;
     view.requestFocus();
 
-    if (refresh) {
-      imm.restartInput(view);
-    }
+    imm.restartInput(view);
     imm.showSoftInput(view, InputMethodManager.SHOW_IMPLICIT);
     Log.i(TAG, "showIme: requested");
   }
